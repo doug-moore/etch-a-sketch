@@ -7,11 +7,8 @@ h1 {
     margin-bottom:8px;
 }
 
-#mode {
-    margin-bottom: 8px;
-}
-
 .board {
+    display: grid;
     width: 300px;
     height: 300px;
     border: 1px solid black;
@@ -23,10 +20,12 @@ h1 {
 }
 
 .options {
-    display: flex;
+    /* DONT FORGET DISPLAY GRID HAHAHAHA */
+    
     flex-direction: column;
     align-items: center;
     gap: 8px;
+    display: grid; 
 }
 
 .btn-container {
