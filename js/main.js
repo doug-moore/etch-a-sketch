@@ -1,6 +1,4 @@
-
-
-
+let color = 'black';
 
 // //populate board
 function populate(size){
@@ -11,14 +9,14 @@ function populate(size){
     
     let numDivs = size * size;
     for(let i = 0; i < numDivs; i++){
-        let div = document.createElement('div');
-        board.insertAdjacentElement('beforeend', div);//first arg string, second var
+        let squares = document.createElement('div');
+        squares.addEventListener('mouseover', colorDiv)
+        board.insertAdjacentElement('beforeend', squares);//first arg string, second var
+        
     }
-
 }
 
-populate(32)
-
+populate(16)
 
 //make change size input function
 function getSize(){
@@ -30,6 +28,30 @@ function getSize(){
         populate(input)
     }
 }
+
+
+function colorDiv(){
+    if (color == 'black'){
+        this.style.backgroundColor = 'black';
+    } else if (color == 'gray'){
+        this.style.backgroundColor = 'gray';
+    } else if (color == 'eraser'){
+        this.style.backgroundColor = 'white';
+    } else if (color == 'random'){
+        this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`
+    }
+}
+
+function setColor(colorChoice){
+    color = colorChoice;
+}
+
+function resetBoard(){
+    let divs = document.querySelectorAll('div');
+    divs.forEach((div) => div.style.backgroundColor = 'white');
+}
+
+
 // const inputBox = document.querySelector('input-box');
 // inputBox.addEventListener('input', function(){
 
