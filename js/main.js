@@ -1,6 +1,19 @@
 let color = 'black';
-
+let click = false;
 // //populate board
+
+document.querySelector('body').addEventListener('click', function(e){
+    if (e.target.tagName != 'BUTTON'){
+        click = !click;
+        let draw = document.querySelector('#draw');
+        if (click){
+            draw.innerHTML = 'You Can Draw!';
+        } else {
+            draw.innerHTML = 'You Can Not Draw!'
+        }
+    }
+})
+
 function populate(size){
     let board = document.querySelector('.board');
     board.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
@@ -31,14 +44,16 @@ function getSize(){
 
 
 function colorDiv(){
-    if (color == 'black'){
-        this.style.backgroundColor = 'black';
-    } else if (color == 'gray'){
-        this.style.backgroundColor = 'gray';
-    } else if (color == 'eraser'){
-        this.style.backgroundColor = 'white';
-    } else if (color == 'random'){
-        this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`
+    if (click){
+        if (color == 'black'){
+            this.style.backgroundColor = 'black';
+        } else if (color == 'gray'){
+            this.style.backgroundColor = 'gray';
+        } else if (color == 'eraser'){
+            this.style.backgroundColor = 'white';
+        } else if (color == 'random'){
+            this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`
+        }
     }
 }
 
